@@ -1,0 +1,222 @@
+@import './var';
+
+html, body {
+  height: 100vh;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+html {
+  font-size: $rem;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  font-family: Lato, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, sans-serif;
+  position: relative;
+  color: $color_default;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1em;
+  font-weight: 400;
+}
+
+a, span {
+  display: inline-block;
+}
+
+a {
+  cursor: pointer;
+  color: $color_main;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+}
+
+
+#app {
+  height: 100vh;
+  &>div {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    transition: transform 0.35s, opacity 0.35s;
+    position: absolute;
+    width: 100vw;
+    box-sizing: border-box;
+    &::-webkit-scrollbar {
+      width: 0 !important;
+      display: none;
+    }
+  }
+}
+
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-ellipsis {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  // 文本强制换行
+  &-wrap {
+    word-wrap: break-word;
+  }
+  // 强制不换行
+  &-nowrap {
+    word-wrap: keep-all;
+    white-space: nowrap;
+  }
+  // 金融字体
+  &-oswald {
+    font-family: Oswald;
+  }
+  // 大写字母
+  &-up {
+    text-transform: uppercase;
+  }
+  // 金色渐变字体
+  &-gold {
+    $color_top: #d89345;
+    $color_bottom: #FAC270;
+    color: $color_top;
+    line-height: 1.15em;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba($color_top, 1)), to(rgba($color_bottom, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  // 字体颜色 text-{color} [$colors_text]
+  @for $i from 1 through length($colors_text) {
+    $key: nth(map-keys($colors_text), $i);
+    $color: map-get($colors_text, $key);
+
+    &-#{$key} {
+      color: $color;
+    }
+  }
+
+  // 控制字体粗细 text-{num} [300-700]
+  @for $i from 3 through 7 {
+    &-#{$i}00 {
+      font-weight: #{$i}10;
+    }
+  }
+}
+
+// 字体大小 按设计稿上的 px 单位使用,自动转成 rem , fs-{size} [10-60]
+@for $i from 5 through 30 {
+  $size: $i*2;
+  .fs-#{$size} {
+    font-size: #{$size}px;
+  }
+}
+
+.full-screen {
+  height: 100%;
+  // overflow-y: auto;
+}
+
+.block {
+  display: block;
+}
+
+// 盒模型: 4 的整数倍 最大 24
+@for $i from 0 through 6 {
+  $size: $i*4;
+  .m-#{$size} {
+    margin: #{$size}px;
+  }
+  .mt-#{$size} {
+    margin-top: #{$size}px;
+  }
+  .ml-#{$size} {
+    margin-left: #{$size}px;
+  }
+  .mr-#{$size} {
+    margin-right: #{$size}px;
+  }
+  .mb-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+  .p-#{$size} {
+    padding: #{$size}px;
+  }
+  .pt-#{$size} {
+    padding-top: #{$size}px;
+  }
+  .pl-#{$size} {
+    padding-left: #{$size}px;
+  }
+  .pr-#{$size} {
+    padding-right: #{$size}px;
+  }
+  .pb-#{$size} {
+    padding-bottom: #{$size}px;
+  }
+}
+
+.btn {
+  &.fade {
+    &:active {
+      opacity: 0.45;
+    }
+  }
+}
+
+.border-1px {
+  border-bottom: 1px solid $color_border;
+}
+
+.fade {
+  transition: all 0.2s;
+}
+
+.scroll-y {
+  overflow-y: auto;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}
+
+.slide-left-enter, .slide-right-leave-to {
+  opacity: 0.25;
+  transform: translateX(100vw);
+}
+.slide-right-enter, .slide-left-leave-to {
+  opacity: 0.25;
+  transform: translateX(-100vw);
+}

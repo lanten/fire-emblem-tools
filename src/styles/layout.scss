@@ -1,0 +1,40 @@
+@import'./var.scss';
+
+.flex {
+  display: flex;
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.center-h {
+    justify-content: center;
+  }
+
+  &.center-v {
+    align-items: center;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  .flex-none {
+    flex: none;
+  }
+
+}
+@for $i from 1 through 12 {
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+}

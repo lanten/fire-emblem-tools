@@ -1,0 +1,233 @@
+@import './var';
+
+body {
+  background: linear-gradient(360deg, $color_background2 0%, $color_background 100%);
+}
+
+.card {
+  background-color: $color_background3;
+  border-radius: $radius_lg;
+  overflow: hidden;
+  padding: $padding;
+}
+
+// 单元格
+.van-cell-group {
+  background-color: transparent;
+  &.van-hairline--top-bottom {
+    // background-color: #fff;
+    .van-cell {
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  &.card {
+    background-color: $color_background3;
+    padding: 0;
+    &.van-hairline--top-bottom::after {
+      display: none;
+    }
+    .van-cell {
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.van-cell {
+  background-color: transparent;
+  color: $color-default;
+  padding: $padding;
+  display: flex;
+  align-items: center;
+  .van-cell__title {
+    font-size: 14px;
+    .van-cell__label {
+      font-size: 12px;
+      color: $color-gray;
+    }
+  }
+  .van-cell__value {
+    color: $color-light;
+  }
+  .van-cell__value--alone {
+    color: $color-default;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .van-cell__right-icon {
+    color: $color-default;
+    margin-left: 8px;
+  }
+  // 隐藏下边框
+  &.no-border {
+    &:after {
+      display: none;
+    }
+  }
+  &.touch, &.van-cell--clickable {
+    &:active {
+      background-color: $color_background_active2;
+    }
+  }
+  &::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: $padding !important;
+    left: $padding !important;
+    bottom: 0;
+    border-bottom: 0.0625rem solid $color-border !important;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+  }
+
+  &.van-field {
+    padding-bottom: 0;
+    padding-top: 0;
+    .van-field__body {
+      flex: 1;
+      position: relative;
+      overflow-x: hidden;
+      &>input {
+        padding: $padding 0;
+        color: $color_white;
+      }
+      &::after {
+        content: "";
+        width: 0;
+        display: block;
+        position: absolute;
+        background-color: $color_main;
+        height: 1px;
+        bottom: 0;
+        left: 50%;
+        z-index: 10;
+        opacity: 0;
+        transition: 0.4s width, 0.4s left, 0.2s opacity;
+      }
+      ::-webkit-input-placeholder {
+        color: $color_placeholder;
+      }
+    }
+
+    &.v-input-focus {
+      .van-field__body {
+        &::after {
+          width: 100%;
+          opacity: 1;
+          left: 0;
+        }
+      }
+    }
+    .van-field__error-message {
+      position: absolute;
+      bottom: 4px;
+      font-size: 12px;
+      line-height: 1em;
+    }
+  }
+}
+
+[class*=van-hairline]::after {
+  border-color: $color-border;
+}
+
+// 弹出层
+.van-popup {
+  background-color: $color_background3;
+  box-sizing: border-box;
+  border-top-left-radius: $radius_lg;
+  border-top-right-radius: $radius_lg;
+}
+
+// 下拉组件
+.van-pull-refresh__head {
+  $h: 32px;
+  top: -$h !important;
+  height: $h !important;
+  line-height: $h !important;
+  .van-pull-refresh__loading {
+    color: $color_gray;
+    .van-loading {
+      color: $color_gray !important;
+      margin-right: 8px;
+    }
+  }
+}
+
+.van-button {
+  border-radius: $radius_lg;
+  border-width: 0;
+  &.van-button--default {
+    background-color: $color-light;
+    color: $color-white;
+    border: none;
+  }
+  &.van-button--primary {
+    background-color: $color_main;
+    border: none;
+    &[disabled=disabled] {
+      background-color: $color-light;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: $color_placeholder;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+// 时间选择背景色
+.van-picker {
+  background-color: $color_background3;
+  &__mask {
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0)),
+      linear-gradient(0deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
+  }
+  .van-picker-column__item {
+    color: #fff;
+  }
+  [role=button]:active {
+    background-color: $color_background_active2;
+  }
+}
+
+
+// 数字键盘颜色和边框
+.van-number-keyboard {
+  background-color: $color_background3;
+  .van-key--gray {
+    background-color: $color_background3;
+  }
+  .van-hairline::after {
+    border-width: 0;
+  }
+  .van-key:not(.van-key--close) {
+    &[class*=active] {
+      background-color: $color_background_active2;
+    }
+  }
+}
+
+.van-picker {
+  .van-picker-column {
+    .van-picker-column__item {
+      color: $color_light;
+      transition: color 0.2s;
+      &.van-picker-column__item--selected {
+        color: $color_white;
+      }
+    }
+  }
+}

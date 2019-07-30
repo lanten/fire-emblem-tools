@@ -1,0 +1,44 @@
+// colors
+$color_white:#FFFFFF;
+$color_border:rgba(#fff, 0.1);
+$color_border_light:#f1f3f5;
+// ---- 
+$color_default:rgba(#F3F3F3, .8);
+$color_gray:#6C717A;
+$color_light:#8D939D;
+// ----
+$color_main:#FCC776;
+$color_blue:#1862D9;
+$color_dark:#54565E;
+$color_red:rgba(#EA6771, .8);
+// ----
+$color_background:#212125;
+$color_background2:#282B39;
+$color_background3:#363844;
+$color_background_active: darken($color_background3, 1);
+$color_background_active2: darken($color_background3, 3);
+
+$color_placeholder:$color_light;
+// ----
+$colors_text: (main:$color_main,
+  blue:$color_blue,
+  dark:$color_dark,
+  default:$color_default,
+  gray:$color_gray,
+  light:$color_light,
+  red:$color_red,
+  white:white);
+
+// other
+
+$rem:16px;
+$rpx:16;
+$padding:16px;
+$shadow:0 1px 3px rgba(26, 26, 26, .1);
+$shadow_light:0 0 4px rgba($color_light, .45);
+$radius:3px;
+$radius_lg:6px;
+$animation:cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$animationFadeOut:cubic-bezier(0.175, 0.82, 0.265, 1);
+$animationFadeIn:cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$animationOutBack:cubic-bezier(0.68, -0.55, 0.265, 1.55);
