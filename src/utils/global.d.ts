@@ -1,4 +1,5 @@
 import Vue, { VNode } from 'vue'
+import { AxiosStatic } from 'axios'
 
 declare global {
   namespace JSX {
@@ -17,5 +18,12 @@ declare global {
     WVJBCallbacks: any
     webkit: any
     [key: string]: any
+  }
+}
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $picker: PopupPickerClass
+    $axios: AxiosStatic
   }
 }

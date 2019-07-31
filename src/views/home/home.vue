@@ -1,11 +1,10 @@
 <template>
-  <div class="p-16 home">
-    <app-header title="home" />
+  <div class="home">
+    <app-header />
 
-    home
-    <div class="mt-16">
-      <router-link to="/demo">demo</router-link>
-    </div>
+    <van-cell-group class="mt-16">
+      <van-cell title="茶会答案查询" to="/search" is-link />
+    </van-cell-group>
   </div>
 </template>
 

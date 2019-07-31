@@ -7,10 +7,12 @@ export default {
     {
       path: '',
       name: 'home',
-      meta: {
-        title: 'home',
-      },
       component: () => import('./home.vue'),
+    },
+    {
+      path: 'get-data',
+      name: 'get-data',
+      component: () => import('./get-data.vue'),
     },
   ],
 }

@@ -93,6 +93,20 @@ body {
   &.van-field {
     padding-bottom: 0;
     padding-top: 0;
+    position: relative;
+    &::before {
+      content: "";
+      width: 0;
+      display: block;
+      position: absolute;
+      background-color: $color_main;
+      height: 1px;
+      bottom: 0;
+      left: 50%;
+      z-index: 10;
+      opacity: 0;
+      transition: 0.4s width, 0.4s left, 0.2s opacity;
+    }
     .van-field__body {
       flex: 1;
       position: relative;
@@ -101,31 +115,16 @@ body {
         padding: $padding 0;
         color: $color_white;
       }
-      &::after {
-        content: "";
-        width: 0;
-        display: block;
-        position: absolute;
-        background-color: $color_main;
-        height: 1px;
-        bottom: 0;
-        left: 50%;
-        z-index: 10;
-        opacity: 0;
-        transition: 0.4s width, 0.4s left, 0.2s opacity;
-      }
       ::-webkit-input-placeholder {
         color: $color_placeholder;
       }
     }
 
     &.v-input-focus {
-      .van-field__body {
-        &::after {
-          width: 100%;
-          opacity: 1;
-          left: 0;
-        }
+      &::before {
+        width: calc(100% - #{$padding*2});
+        opacity: 1;
+        left: $padding;
       }
     }
     .van-field__error-message {

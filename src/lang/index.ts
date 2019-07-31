@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-interface anyObj {
-  [key: string]: any
-}
-
 Vue.use(VueI18n)
 
 const cns = require.context('./zh', true, /\.json$/)
@@ -13,10 +9,10 @@ const ens = require.context('./en', true, /\.json$/)
 
 const langs = [{ name: 'zh', data: cns }, { name: 'hk', data: hks }, { name: 'en', data: ens }]
 
-const messages: anyObj = {}
+const messages: any = {}
 
 langs.forEach(({ name, data }) => {
-  const obj: anyObj = {}
+  const obj: any = {}
 
   data.keys().forEach(item => {
     const key = $app.toCamel(item.replace(/^\.\/(.*)\.json$/, '$1'))

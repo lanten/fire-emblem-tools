@@ -7,6 +7,7 @@
     :disabled="disabled"
     :readonly="readonly"
     :class="{ 'v-input-focus': isFocus }"
+    :left-icon="leftIcon"
     @focus="inputFocus"
     @blur="inputBlur"
     @input="v => $emit('input', v)"
@@ -26,6 +27,7 @@ export default class Input extends Vue {
   @Prop({ type: [String, Number] }) readonly value!: string | number
   @Prop({ type: String }) readonly placeholder?: string
   @Prop({ type: String }) readonly type?: string
+  @Prop({ type: String }) readonly leftIcon?: string
   @Prop({ type: Boolean }) readonly disabled?: boolean
   @Prop({ type: Boolean }) readonly readonly?: boolean
   @Prop({ type: [String, Number] }) readonly maxlength?: string | number

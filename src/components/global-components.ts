@@ -4,6 +4,7 @@
  */
 
 import Vue from 'vue'
+import axios from 'axios'
 
 import TransitionRouter from './transition-router'
 import AppHeader from './app-header'
@@ -20,3 +21,4 @@ Vue.component('v-input', VInput)
 
 // 快速打开一个选择器
 Vue.prototype.$picker = picker
+Vue.prototype.$axios = axios
