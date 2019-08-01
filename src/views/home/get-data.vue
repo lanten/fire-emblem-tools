@@ -72,6 +72,8 @@ export default class Home extends Vue {
 
     const topics: Array<string> = await this.$axios.get('datas/topics.json').then(res => res.data)
 
+    const likeTea = await this.$axios.get('/datas/like-tea.json').then(res => res.data)
+
     const topicsMap = {}
     topics.forEach((topic, topicIndex) => {
       topicsMap[topic] = topicIndex
@@ -86,7 +88,10 @@ export default class Home extends Vue {
       const nameIndexMap = {}
       names.forEach((name, nameIndex) => {
         nameIndexMap[nameIndex] = name
-        obj.items[name] = []
+        obj.items[name] = {
+          topics: [],
+          tea: likeTea[name],
+        }
       })
 
       data.forEach(val => {
@@ -94,7 +99,7 @@ export default class Home extends Vue {
         const topicIndex = topicsMap[topic]
         val.forEach((bool: boolean, index) => {
           if (bool) {
-            obj.items[nameIndexMap[index]].push(topicIndex)
+            obj.items[nameIndexMap[index]].topics.push(topicIndex)
           }
         })
       })

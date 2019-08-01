@@ -55,6 +55,8 @@ router.beforeEach(async (to, from, next) => {
   } else {
     const titleKey = `pageTitle.${to.name}`
     const localizeTitle = i18n.t(titleKey)
+
+    console.log({ titleKey, localizeTitle })
     document.title = localizeTitle === titleKey ? '' : <string>localizeTitle || ''
   }
 

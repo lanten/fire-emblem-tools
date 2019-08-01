@@ -21,9 +21,13 @@ langs.forEach(({ name, data }) => {
   messages[name] = obj
 })
 
+const query = $app.query
 let localLang: string = $app.systemInfo.language
 
-if (localLang === '') {
+if (query.lang) {
+  localLang = query.lang
+  $app.setLanguage(localLang)
+} else if (localLang === '') {
   localLang = setLanguage()
   $app.setLanguage(localLang)
 }

@@ -22,6 +22,10 @@ export default class Search extends Vue {
     return this.groupName || '学级筛选'
   }
 
+  queryData() {
+    // this.$axios.get()
+  }
+
   openPicker() {
     this.$axios.get('/datas/groups.json').then(res => {
       this.$picker
