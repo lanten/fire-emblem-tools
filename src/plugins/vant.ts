@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vant, { Locale } from 'vant'
+import 'vant/lib/icon/local.css'
 
 Vue.use(Vant)
 

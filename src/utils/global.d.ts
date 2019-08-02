@@ -25,5 +25,6 @@ declare module 'vue/types/vue' {
   interface Vue {
     $picker: PopupPickerClass
     $axios: AxiosStatic
+    $loading(status: boolean): void
   }
 }

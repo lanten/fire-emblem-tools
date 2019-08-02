@@ -17,6 +17,7 @@ export default class Search extends Vue {
   mounted() {}
 
   groupName: string = ''
+  groupIndex: number = 0
 
   get groupNameH() {
     return this.groupName || '学级筛选'
@@ -27,12 +28,14 @@ export default class Search extends Vue {
   }
 
   openPicker() {
-    this.$axios.get('/datas/groups.json').then(res => {
+    $api.common.queryGroups().then(groups => {
       this.$picker
         .open({
-          columns: res.data,
+          columns: groups,
+          defaultIndex: this.groupIndex,
         })
         .then(res => {
+          this.groupIndex = res.index
           this.groupName = res.value
         })
     })

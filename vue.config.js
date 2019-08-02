@@ -31,6 +31,7 @@ module.exports = {
       },
       plugins: [
         new webpack.ProvidePlugin({
+          $api: path.resolve(__dirname, './src/api'),
           $app: path.resolve(__dirname, './src/utils/app'),
           $const: path.resolve(__dirname, './src/utils/const'),
         }),

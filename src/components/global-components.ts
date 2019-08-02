@@ -10,6 +10,7 @@ import TransitionRouter from './transition-router'
 import AppHeader from './app-header'
 import VInput from './input'
 import picker from './popup-picker'
+import loading from './loading'
 
 Vue.component('transition-router', TransitionRouter)
 
@@ -22,3 +23,4 @@ Vue.component('v-input', VInput)
 // 快速打开一个选择器
 Vue.prototype.$picker = picker
 Vue.prototype.$axios = axios
+Vue.prototype.$loading = loading

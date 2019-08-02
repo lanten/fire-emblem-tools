@@ -54,6 +54,7 @@ class PopupPicker {
                 value-key={this.valueKey}
                 columns={this.columns}
                 onChange={this.onPickerChange}
+                default-index={this.defaultIndex}
               />
 
               <div class="pl-16 pb-16 pr-16 pt-8">
@@ -78,8 +79,11 @@ class PopupPicker {
           this.columns = columns
           if (title) this.title = title
           if (valueKey) this.valueKey = valueKey
-          if (defaultIndex) this.defaultIndex = defaultIndex
-          if (Array.isArray(columns)) {
+          if (defaultIndex) {
+            this.defaultIndex = defaultIndex
+            this.activeIndex = defaultIndex
+            this.activeValue = columns[defaultIndex]
+          } else if (Array.isArray(columns)) {
             this.activeValue = columns[0]
           }
           this.$nextTick().then(() => {
