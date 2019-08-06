@@ -1,5 +1,6 @@
 import axios from 'axios'
 import cookie from 'js-cookie'
+import openLoading from '@/components/loading'
 
 const DEFAULT_CONFIG = {
   method: 'get',
@@ -23,17 +24,38 @@ export default function request(
   if (!service) return Promise.reject('service is null')
 
   const options: RequestOptions = Object.assign({}, DEFAULT_CONFIG, optionsSource)
-  let { method, url, headers } = options
+  let { method, url, headers, loading } = options
   const sendData: any = {
     url: `${url}/${service}`,
     // method,
     // headers,
     data: params,
   }
-  return axios(sendData)
-    .then(res => res.data)
-    .catch((err: any) => {
-      console.error({ sendData, err })
-      return Promise.reject({ ...err, service, sendData, resData: err })
-    })
+  const catchKey = JSON.stringify(sendData)
+  const catchDataSource = localStorage.getItem(catchKey) || ''
+  let catchData: any
+
+  try {
+    catchData = JSON.parse(catchDataSource)
+  } catch (error) {
+    catchData = void 0
+  }
+
+  if (catchData) {
+    return new Promise(resolve => resolve(catchData))
+  } else {
+    if (loading) openLoading(true)
+    return axios(sendData)
+      .then(res => {
+        localStorage.setItem(catchKey, JSON.stringify(res.data))
+        res.data
+      })
+      .catch((err: any) => {
+        console.error({ sendData, err })
+        return Promise.reject({ ...err, service, sendData, resData: err })
+      })
+      .finally(() => {
+        if (loading) openLoading(false)
+      })
+  }
 }

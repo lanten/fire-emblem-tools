@@ -8,6 +8,8 @@
 
     <van-button class="mt-16" type="primary" block @click="getTeaLike">茶叶喜好</van-button>
 
+    <van-button class="mt-16" type="primary" block @click="getNames">names</van-button>
+
     <van-button class="mt-16" type="primary" block @click="getData">parseData</van-button>
 
     <van-button class="mt-16" type="primary" block @click="getDataTopics">getDataTopics</van-button>
@@ -29,6 +31,18 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class Home extends Vue {
   dataSource: any = []
   mounted() {}
+
+  async getNames() {
+    const dataSrc: Array<DataSourceItem> = await $api.common.querySourceData()
+
+    const obj = {}
+
+    dataSrc.forEach(val => {
+      obj[val.title] = val.names
+    })
+
+    this.dataSource = obj
+  }
 
   async getTeaLike() {
     const strSource = await this.$axios.get('/datas/like-tea-source.txt').then(res => res.data)
@@ -66,9 +80,7 @@ export default class Home extends Vue {
   }
 
   async getDataGroup() {
-    const dataSrc: Array<DataSourceItem> = await this.$axios
-      .get('datas/source.json')
-      .then(res => res.data)
+    const dataSrc: Array<DataSourceItem> = await $api.common.querySourceData()
 
     const topics: Array<string> = await this.$axios.get('datas/topics.json').then(res => res.data)
 

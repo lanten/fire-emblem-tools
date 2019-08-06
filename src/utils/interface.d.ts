@@ -4,9 +4,3 @@
 declare interface UrlQuery {
   [key: string]: string
 }
-
-declare interface DataSourceItem {
-  title: string // 学级
-  names: Array<string>
-  data: Array<Array<any>>
-}

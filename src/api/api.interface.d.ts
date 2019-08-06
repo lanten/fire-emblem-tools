@@ -15,6 +15,12 @@ declare interface RequestOptions {
   headers?: Headers
 }
 
+declare interface DataSourceItem {
+  title: string // 学级
+  names: Array<string>
+  data: Array<Array<any>>
+}
+
 declare interface TopicDetail {
   group: string
   items: {
