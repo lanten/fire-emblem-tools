@@ -28,8 +28,13 @@ declare namespace $api {
     function queryGroups(): Promise<Array<string>>
 
     /**
-     * 获取话题答案
+     * 获取话题详情
      */
     function queryTopicDetails(): Promise<Array<any>>
+
+    /**
+     * 获取所有话题
+     */
+    function queryTopics(): Promise<Array<string>>
   }
 }

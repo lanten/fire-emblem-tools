@@ -1,7 +1,7 @@
 export default [
   {
-    name: 'search',
-    component: () => import('./search.vue'),
+    name: 'topic',
+    component: () => import('./topic.vue'),
   },
   {
     name: 'search-role',

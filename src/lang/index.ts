@@ -4,10 +4,14 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 
 const cns = require.context('./zh', true, /\.json$/)
-const hks = require.context('./hk', true, /\.json$/)
-const ens = require.context('./en', true, /\.json$/)
+// const hks = require.context('./hk', true, /\.json$/)
+// const ens = require.context('./en', true, /\.json$/)
 
-const langs = [{ name: 'zh', data: cns }, { name: 'hk', data: hks }, { name: 'en', data: ens }]
+const langs = [
+  { name: 'zh', data: cns },
+  // { name: 'hk', data: hks },
+  // { name: 'en', data: ens }
+]
 
 const messages: any = {}
 
@@ -22,7 +26,8 @@ langs.forEach(({ name, data }) => {
 })
 
 const query = $app.query
-let localLang: string = $app.systemInfo.language
+// let localLang: string = $app.systemInfo.language
+let localLang: string = 'zh'
 
 if (query.lang) {
   localLang = query.lang

@@ -8,7 +8,7 @@
     </van-cell-group>
 
     <van-cell-group class="mt-16" :border="false">
-      <van-cell v-for="(v, i) in roles" :key="i" is-link>
+      <van-cell v-for="(v, i) in roles" :key="i" is-link @click="onSelect(v)">
         <img :src="`/avatars/${v}.jpg`" />
         <div class="ml-16">
           <h2>{{ v }}</h2>
@@ -33,6 +33,13 @@ export default class Search extends Vue {
 
   get classNameH() {
     return this.className || '学级筛选'
+  }
+
+  onSelect(name: string) {
+    this.$store.commit('searchRole/UPDATE_NAME', name)
+    this.$store.dispatch('searchRole/queryTopicDetail').then(() => {
+      this.$router.back()
+    })
   }
 
   queryData() {

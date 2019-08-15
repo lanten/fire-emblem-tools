@@ -3,7 +3,7 @@
     <app-header />
 
     <van-cell-group class="mt-16">
-      <van-cell title="茶会答案查询" to="/search" is-link />
+      <van-cell title="茶会答案查询" :to="{ name: 'topic' }" is-link />
     </van-cell-group>
   </div>
 </template>
