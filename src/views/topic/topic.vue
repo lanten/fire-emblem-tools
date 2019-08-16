@@ -3,7 +3,15 @@
     <app-header />
 
     <van-cell-group class="mt-16">
-      <van-cell :title="name || '选择角色'" :to="{ name: 'search-role' }" is-link />
+      <van-cell :to="{ name: 'search-role' }" is-link>
+        <template v-if="name">
+          <div class="flex flex-1 center-v">
+            <img :src="`/avatars/${name}.jpg`" />
+            <p class="ml-16">{{ name }}</p>
+          </div>
+        </template>
+        <p v-else>选择角色</p>
+      </van-cell>
       <!-- <van-cell title="选择话题" :to="{ name: 'search-topic' }" is-link /> -->
     </van-cell-group>
 
